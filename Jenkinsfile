@@ -20,21 +20,7 @@ pipeline {
                 sh 'docker build -t npm .'
             }
         }
- stage ('Deploy Artifacts') {
-
-      
-    def server = Artifactory.server 'art' 
-        def uploadSpec = """{
-        "files": [
-            {
-                "pattern": "/var/lib/jenkins/workspace/pipeline/target/*.jar",
-                "target": "naz-repo/"
-            }
-        ]
-    }"""
-    server.upload(uploadSpec)
-   }
-}       
+ 
         
 
        
