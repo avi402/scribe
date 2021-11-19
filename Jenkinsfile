@@ -12,13 +12,12 @@ pipeline {
          sh 'mvn install'
             }
         }
-        
-
-        stage ('Bulding docker docker image') {
+     stage ('Bulding docker docker image') {
             steps {
                 echo "build docker image"
                 sh 'docker build -t npm .'
             }
         }
     }
+}
 
