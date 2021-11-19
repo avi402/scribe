@@ -45,7 +45,7 @@ pipeline {
 
         stage ('Deploying') {
             steps {
-                 echo "Deploying imgae to EKS"
+                 echo "Deploying imgae to EKs"
                  sh 'rm -rf /var/lib/jenkins/.kube/ && aws eks update-kubeconfig --name myeks'
                  sh 'kubectl apply -f deploymentfile.yml'
                  sh 'kubectl apply -f servicefile.yml'
