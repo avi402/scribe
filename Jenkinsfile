@@ -50,6 +50,6 @@ pipeline {
                  sh 'kubectl apply -f deploymentfile.yml'
                  sh 'kubectl apply -f servicefile.yml'
             }
-        }
+       }
 }
 }
