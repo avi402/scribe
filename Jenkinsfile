@@ -17,6 +17,22 @@ pipeline {
                 sh 'docker build -t npm .'
             }
         }
+      stage ('Deploy Artifacts') {
+
+      
+    def server = Artifactory.server 'artifactory' 
+        def uploadSpec = """{
+        "files": [
+            {
+                "pattern": "/var/lib/jenkins/workspace/Scribe/*.json",
+                "target": "avi-repo/"
+            }
+        ]
+    }"""
+    server.upload(uploadSpec)
+   }
+}       
+  
     }
   }
 
