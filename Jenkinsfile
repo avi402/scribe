@@ -36,6 +36,8 @@ pipeline {
     // the Jenkins job name and number).
     buildName: 'artifactsupload',
     buildNumber: '27',
+   // Optional - Only if this build is associated with a project in Artifactory, set the project key as follows.
+    project: 'avi-repo'                 
     
 )   
        }
