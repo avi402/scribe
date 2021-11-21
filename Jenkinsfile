@@ -28,7 +28,7 @@ pipeline {
                                  {
                                   "pattern": "var/lib/jenkins/workspace/Scribe/*.json",
                                   "target": "avi-repo/",
-                                  "recursive": "false"
+                                  
                                 } 
                              ]
                         }'''    
