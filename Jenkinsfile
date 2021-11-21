@@ -17,31 +17,24 @@ pipeline {
                 sh 'docker build -t npm .'
             }
         }
-     stage ('Deploy Artifacts') {
-        steps{
-               rtUpload (
-    serverId: 'artifactory',
-    spec: '''{
-          "files": [
-            {
-              "pattern": "var/lib/jenkins/workspace/Scribe/*.js",
-              "target": "avi-repo/"
+     stage ('Upload') {
+            steps {
+                rtUpload (
+                    buildName: 'jfrog',
+                    buildNumber: '34',
+                    serverId: 'artifactory', // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
+                    spec: '''{
+                              "files": [
+                                 {
+                                  "pattern": "var/lib/jenkins/workspace/Scribe/*.json",
+                                  "target": "avi-repo/",
+                                  "recursive": "false"
+                                } 
+                             ]
+                        }'''    
+                    )
             }
-         ]
-    }''',
- 
-    // Optional - Associate the uploaded files with the following custom build name and build number,
-    // as build artifacts.
-    // If not set, the files will be associated with the default build name and build number (i.e the
-    // the Jenkins job name and number).
-    buildName: 'artifactsupload',
-    buildNumber: '27',
-   // Optional - Only if this build is associated with a project in Artifactory, set the project key as follows.
-    project: 'avi-repo'                 
-    
-)   
-       }
-   }
+        }
   }
  }
         
