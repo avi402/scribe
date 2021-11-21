@@ -38,9 +38,10 @@ pipeline {
     buildNumber: '27',
     
 )   
-     
+       }
+   }
 }
-}
+        
 
   
 
