@@ -18,20 +18,25 @@ pipeline {
             }
         }
       stage ('Deploy Artifacts') {
-
-      
-    def server = Artifactory.server 'artifactory' 
-        def uploadSpec = """{
-        "files": [
-            {
-                "pattern": "/var/lib/jenkins/workspace/Scribe/*.json",
-                "target": "avi-repo/"
+            steps {
+                rtUpload (
+                    buildName: JOB_NAME,
+                    buildNumber: BUILD_NUMBER,
+                    serverId: artifactory, // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
+                    spec: '''{
+                              "files": [
+                                 {
+                                  "pattern": "/var/lib/jenkins/workspace/Scribe/*.json",
+                                  "target": "avi-repo/",
+                                  "recursive": "false"
+                                } 
+                             ]
+                        }'''    
+                    )
             }
-        ]
-    }"""
-    server.upload(uploadSpec)
-   }
-}       
+        }
+      
+    
   
     }
   
