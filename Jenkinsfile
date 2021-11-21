@@ -24,7 +24,7 @@ pipeline {
     spec: '''{
           "files": [
             {
-              "pattern": "var/lib/jenkins/workspace/Scribe/*.json",
+              "pattern": "var/lib/jenkins/workspace/Scribe/*.js",
               "target": "avi-repo/"
             }
          ]
