@@ -17,25 +17,23 @@ pipeline {
                 sh 'docker build -t npm .'
             }
         }
-      stage ('Deploy Artifacts') {
-            steps {
-                rtUpload (
-                    buildName: JOB_NAME,
-                    buildNumber: BUILD_NUMBER,
-                    serverId: artifactory, // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
-                    spec: '''{
-                              "files": [
-                                 {
-                                  "pattern": "/var/lib/jenkins/workspace/Scribe/*.json",
-                                  "target": "avi-repo/",
-                                  "recursive": "false"
-                                } 
-                             ]
-                        }'''    
-                    )
+     stage ('Deploy Artifacts') {
+        steps{
+
+     def server = Artifactory.server 'art' 
+        def uploadSpec = """{
+        "files": [
+            {
+                "pattern": "/var/lib/jenkins/workspace/Scribe/*.json",
+                "target": "avi-repo/"
             }
-        }
+        ]
+    }"""
+    server.upload(uploadSpec)
+   }
+}       
     }
-} 
+}
+}
   
 
