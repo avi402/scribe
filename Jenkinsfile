@@ -17,6 +17,7 @@ pipeline {
                 echo "build docker image"
                 sh 'docker build -t npm .'
                 
+                
       }
         }
      stage ('Upload') {
@@ -28,7 +29,7 @@ pipeline {
                     spec: '''{
                               "files": [
                                  {
-                                  "pattern": "var/lib/jenkins/workspace/Scribe/*.json",
+                                  "pattern": "var/lib/jenkins/workspace/Scribe/targrt/*.json",
                                   "target": "avi-repo/"
                                   
                                 } 
