@@ -9,7 +9,7 @@ pipeline {
             steps {
         echo "code is building"
          sh 'npm install' 
-         sh 'npm run test'       
+                
                 
                 
             }
@@ -18,7 +18,7 @@ pipeline {
             steps {
                 echo "build docker image"
                 sh 'docker build -t npm .'
-                sh 'tar czf Node.tar.gz node_modules index.js package.json  app.json'
+                
                 
             }
         }
