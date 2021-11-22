@@ -25,8 +25,9 @@ pipeline {
              sh    'docker tag 1.0 artprod.mycompany/scibe-docker-local:latest'  
              sh     'docker push artprod.mycompany/scribe-docker-local:latest' 
      
+    }  
   }
-  }
+}        
         
 
   
