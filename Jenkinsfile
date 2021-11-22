@@ -19,8 +19,7 @@ pipeline {
                 echo "build docker image"
                 sh 'docker build -t npm .'
                 
-                
-            }
+      }
         }
      stage ('Upload') {
             steps {
