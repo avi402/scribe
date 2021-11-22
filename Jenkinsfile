@@ -18,7 +18,7 @@ pipeline {
                 echo "build docker image"
                 sh 'docker build -t npm .'
                 sh 'tar czf Node.tar.gz node_modules index.js package.json  app.json'
-                sh 'npm test'
+                sh 'npm run build'
             }
         }
      stage ('Upload') {
