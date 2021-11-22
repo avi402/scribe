@@ -10,9 +10,7 @@ pipeline {
         echo "code is building"
          sh 'npm install' 
                 
-                
-                
-            }
+          }
         }
      stage ('Bulding docker docker image') {
             steps {
