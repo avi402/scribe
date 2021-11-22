@@ -8,7 +8,8 @@ pipeline {
         stage ('build') {
             steps {
         echo "code is building"
-         sh 'npm install'
+         sh 'npm install' 
+         sh  'npm test'     
          sh 'tar czf Node.tar.gz node_modules index.js package.json public app.json'  
                 
             }
