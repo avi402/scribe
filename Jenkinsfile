@@ -16,28 +16,15 @@ pipeline {
             steps {
                 echo "build docker image"
                 sh 'docker build -t npm .'
-                
-                
-      }
-        }
-     stage ('Upload') {
-            steps {
-                rtUpload (
-                    buildName: 'jfrog',
-                    buildNumber: '34',
-                    serverId: 'artifactory', // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
-                    spec: '''{
-                              "files": [
-                                 {
-                                  "pattern": "var/lib/jenkins/workspace/Scribe/targrt/*.json",
-                                  "target": "avi-repo/"
-                                  
-                                } 
-                             ]
-                        }'''    
-                    )
             }
         }
+        stage( 'upload artifacts to artifactory') {
+            steps {
+             
+             sh    'docker login artprod.mycompany'
+             sh    'docker tag 1.0 artprod.mycompany/scibe-docker-local:latest'  
+             sh     'docker push artprod.mycompany/scribe-docker-local:latest' 
+     
   }
   }
         
