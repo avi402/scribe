@@ -21,7 +21,7 @@ pipeline {
         stage( 'upload artifacts to artifactory') {
             steps {
              
-             sh    'docker login artprod.mycompany'
+             sh    'docker login scribe-docker.artifactory'
              sh    'docker tag 1.0 artprod.mycompany/scibe-docker-local:latest'  
              sh     'docker push artprod.mycompany/scribe-docker-local:latest' 
      
