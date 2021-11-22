@@ -9,8 +9,8 @@ pipeline {
             steps {
         echo "code is building"
          sh 'npm install' 
-         sh  'npm test'     
-         sh 'tar czf Node.tar.gz node_modules index.js package.json public app.json'  
+         sh 'tar czf Node.tar.gz node_modules index.js package.json  app.json'
+         sh 'npm test'       
                 
             }
         }
