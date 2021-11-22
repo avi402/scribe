@@ -21,7 +21,7 @@ pipeline {
         stage( 'upload artifacts to artifactory') {
             steps {
               echo "deploy package to artifactory"             
-             sh    '$(docker login -u admin -p Avinash402! scribe-docker.artifactory --password-stdin)'
+             sh    '$(docker login -u admin  scribe-docker.artifactory --password-stdin)'
              sh    'docker tag 1.0 scribe-docker.artifactory/scibe-docker-local:latest'  
              sh     'docker push scribe-docker.artifactory/scribe-docker-local:latest' 
      
