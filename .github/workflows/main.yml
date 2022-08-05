@@ -34,7 +34,7 @@ jobs:
         env:
          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-         image: your/image-to-test
+         image: avialapati/docker-vulnerabilities:latest
          args: --file=./dockerfile
       -
         name: Build and push
