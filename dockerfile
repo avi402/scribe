@@ -1,4 +1,4 @@
-FROM node:18.6.0-slim
+FROM node:hydrogen-bullseye-slim
 
 # Create app directory
 WORKDIR /usr/src/app
